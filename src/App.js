@@ -1,23 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import WeatherIndicatorGroup from './WeatherIndicatorGroup/WeatherIndicatorGroup.js';
+import ErrorDisplay from './ErrorDisplay/ErrorDisplay.js';
+import { useWeatherData } from './hooks/useWeatherData.js';
 
 function App() {
+  const { data, loading, error } = useWeatherData('Toronto', {
+    units: 'metric',
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      {loading && <div> Loading...</div>}
+      {error && <ErrorDisplay error={error} />}
+      {data && !error && <WeatherIndicatorGroup data={data} />}
     </div>
   );
 }

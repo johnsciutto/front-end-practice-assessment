@@ -1,0 +1,7 @@
+.indicator-group {
+  display:flex;
+  border: 1px solid #eee;
+}
+
+.indicator-group > *:not(:last-child){
+}

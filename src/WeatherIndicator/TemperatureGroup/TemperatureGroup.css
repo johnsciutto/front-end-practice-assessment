@@ -1,0 +1,14 @@
+.temp-group {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.temp-group > * {
+  margin: 0 0 1rem;
+  font-size: 1.2rem;
+}
+
+.max-temp {
+  color: #333;
+}
