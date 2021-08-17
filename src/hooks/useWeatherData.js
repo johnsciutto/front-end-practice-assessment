@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { API_KEY } from '../constants.js';
 
 /**
@@ -7,23 +7,21 @@ import { API_KEY } from '../constants.js';
  */
 const isDesiredIndex = (_, i) => i % 8 === 0;
 
+const createApiUrl = (city, { units = 'standard' }) => {
+  return `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${units}&appid=${API_KEY}`;
+}
+
 const useWeatherData = (city, options) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [data, setData] = useState();
 
-  const createApiUrl = useCallback(
-    ({ units = 'standard' }) => {
-      return `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${units}&appid=${API_KEY}`;
-    },
-    [city]
-  );
-
+  const apiUrl = createApiUrl(city, options);
 
   useEffect(() => {
     const getWeatherData = async () => {
       try {
-        const res = await fetch(createApiUrl(options));
+        const res = await fetch(apiUrl);
         if (!res.ok) {
           throw new Error(`The status of the response is: ${res.status}`);
         }
@@ -47,7 +45,7 @@ const useWeatherData = (city, options) => {
       }
     };
     getWeatherData();
-  }, [createApiUrl, options]);
+  }, [apiUrl]);
 
   return {
     loading: isLoading,
