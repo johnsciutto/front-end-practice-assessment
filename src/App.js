@@ -1,8 +1,9 @@
-import './App.css';
 import WeatherIndicatorGroup from './WeatherIndicatorGroup/WeatherIndicatorGroup.js';
 import ErrorDisplay from './ErrorDisplay/ErrorDisplay.js';
 import Loading from './Loading/Loading.js';
 import { useWeatherData } from './hooks/useWeatherData.js';
+
+import './App.css';
 
 function App() {
   const { data, loading, error } = useWeatherData('Toronto', {

@@ -1,4 +1,5 @@
 import WeatherIndicator from '../WeatherIndicator/WeatherIndicator.js';
+
 import './WeatherIndicatorGroup.css';
 
 const WeatherIndicatorGroup = ({ data }) => {
