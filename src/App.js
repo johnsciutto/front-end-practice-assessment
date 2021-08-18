@@ -1,6 +1,7 @@
 import './App.css';
 import WeatherIndicatorGroup from './WeatherIndicatorGroup/WeatherIndicatorGroup.js';
 import ErrorDisplay from './ErrorDisplay/ErrorDisplay.js';
+import Loading from './Loading/Loading.js';
 import { useWeatherData } from './hooks/useWeatherData.js';
 
 function App() {
@@ -10,7 +11,7 @@ function App() {
 
   return (
     <div className="app-container">
-      {loading && <div> Loading...</div>}
+      {loading && <Loading />}
       {error && <ErrorDisplay error={error} />}
       {data && !error && <WeatherIndicatorGroup data={data} />}
     </div>
