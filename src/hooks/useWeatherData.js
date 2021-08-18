@@ -9,7 +9,7 @@ const isDesiredIndex = (_, i) => i % 8 === 0;
 
 const createApiUrl = (city, { units = 'standard' }) => {
   return `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${units}&appid=${API_KEY}`;
-}
+};
 
 const useWeatherData = (city, options) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -28,13 +28,16 @@ const useWeatherData = (city, options) => {
         const data = await res.json();
 
         const dataArr = data.list.filter(isDesiredIndex).map((d) => {
-          const { dt_txt: date, main, weather } = d;
-          return {
-            date: new Date(date).toLocaleDateString('en-US', { weekday: 'short' }),
-            max: main.temp_max.toFixed(),
-            min: main.temp_min.toFixed(),
-            icon: weather[0].icon,
-          };
+          const { dt_txt, main, weather } = d;
+
+          const icon = weather[0].icon.slice(0, -1);
+          const min = main.temp_min.toFixed();
+          const max = main.temp_max.toFixed();
+          const date = new Date(dt_txt).toLocaleDateString('en-US', {
+            weekday: 'short',
+          });
+
+          return { date, max, min, icon };
         });
 
         setData(dataArr);
