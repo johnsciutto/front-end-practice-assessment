@@ -7,6 +7,19 @@ import { API_KEY } from '../constants.js';
  */
 const isDesiredIndex = (_, i) => i % 8 === 0;
 
+/**
+ * Given the name of a city and an optional options object, produce a string
+ * of the appropiate OpenWeatherMap API url to get the desired data.
+ *
+ * @param {string} city - the name of a city.
+ * @param {Object} options - an options object with the following parameters:
+ * @property {string} [options.units='standard'] - the units of the min and
+ *                                                  max temperatures. Could be
+ *                                                  one of:
+ *                                                    - 'standard'
+ *                                                    - 'imperial'
+ *                                                    - 'metric'
+ */
 const createApiUrl = (city, { units = 'standard' }) => {
   return `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${units}&appid=${API_KEY}`;
 };
