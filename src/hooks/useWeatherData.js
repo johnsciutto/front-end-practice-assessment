@@ -47,7 +47,9 @@ const createApiUrl = (city, { units = 'standard' }) => {
  *                                 - date: the short weekday name for the day
  *                                         that is being represented.
  *                                 - icon: a string representing the icon to
- *                                        display.
+ *                                         display according to the image name
+ *                                         located in the "public/assets/images"
+ *                                         folder.
  *                                 - min: the min temperature for that day.
  *                                 - max: the max temperature for that day.
  */
