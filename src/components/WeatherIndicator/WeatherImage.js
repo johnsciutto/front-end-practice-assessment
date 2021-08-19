@@ -1,4 +1,4 @@
-import { WEATHER_ICON_DESCRIPTION } from '../constants.js';
+import { WEATHER_ICON_DESCRIPTION } from '../../constants.js';
 
 const WeatherImage = ({ id }) => {
   return (
