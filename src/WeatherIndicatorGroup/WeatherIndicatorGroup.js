@@ -5,10 +5,9 @@ import './WeatherIndicatorGroup.css';
 const WeatherIndicatorGroup = ({ data }) => {
   return (
     <div className="indicator-group">
-      {data.map((dataDay, idx) => {
-        if (idx === 0) return <WeatherIndicator key={dataDay.date} today data={dataDay} />
-        return <WeatherIndicator key={dataDay.date} data={dataDay} />
-      })}
+      {data.map((dataDay, idx) => (
+        <WeatherIndicator key={dataDay.date} today={idx === 0} data={dataDay} />
+      ))}
     </div>
   );
 };
